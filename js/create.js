@@ -462,22 +462,3 @@ botaoSalvar.addEventListener("click", () => {
 });
 
 desenharCanvas();
-
-const formularioBug =
-    document.getElementById("bugForm");
-
-const mensagemBug =
-    document.getElementById("bugMessage");
-
-
-formularioBug.addEventListener("submit", (evento) => {
-
-    evento.preventDefault();
-
-    console.log("Mensagem enviada com sucesso!");
-
-    mensagemBug.classList.remove("d-none");
-
-    formularioBug.reset();
-
-});
