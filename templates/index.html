@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}
+Collage-journal | Home
+{% endblock %}
+
+{% block content %}
+    <main>
+        <section class="banner">
+            <div class="conteudo_banner">
+                <h1>Collage-journal</h1>
+                <h2>Transforme momentos em páginas.</h2>
+            </div>
+            <div class="fim_banner"></div>
+        </section>
+        <section>
+            <h4>Journal</h4>
+            <p>Um journal é uma forma de registrar aquilo que queremos lembrar, organizar ou simplesmente colocar para fora.</p>
+            <p>Palavras, imagens, datas, pensamentos, pequenos acontecimentos. Não existe uma maneira certa de montar uma página.</p>
+            <p>O Collage-journal transforma essa experiência em um espaço digital para criar, experimentar e guardar.</p>
+        </section>
+        <section>
+            <h4>O que é um journal</h4>
+            <p>Um journal é um espaço para registrar experiências, pensamentos, ideias e momentos do cotidiano.</p>
+            <p>Pode ser um diário, uma coleção de memórias, um lugar para organizar planos ou simplesmente uma página criada porque alguma coisa chamou sua atenção.</p>
+            <p>Algumas páginas são cheias de texto. Outras têm apenas uma fotografia, uma data ou algumas palavras.</p>
+            <p>O importante não é seguir um formato específico, mas encontrar uma maneira de registrar aquilo que faz sentido para você.</p>
+        </section>
+        <section>
+            <h4>Um journal não precisa ser uma coisa só.</h4>
+            <section class="carrocel">
+                <article class="card">
+                    <img src="{{ url_for('static', filename='img/heather-green-gUSgDLS1ua4-unsplash.jpg') }}">
+                    <div>
+                        <h3>Diário</h3>
+                        <p>Um espaço para escrever sobre acontecimentos, pensamentos e sentimentos do cotidiano.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <img src="{{ url_for('static', filename='img/jazmin-quaynor-bm9zWKi_c9Y-unsplash.jpg') }}">
+                    <div>
+                        <h3>Bullet Journal</h3>
+                        <p>Uma maneira flexível de organizar tarefas, planos, hábitos e compromissos.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <img src="{{ url_for('static', filename='img/allie-feeley-vX_Y9bY-6Os-unsplash.jpg') }}">
+                    <div>
+                        <h3>Collage Journal</h3>
+                        <p>Uma combinação de imagens, textos, desenhos, cores e diferentes elementos visuais.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <img src="{{ url_for('static', filename='img/annie-spratt-jCrftLHe3ec-unsplash.jpg') }}">
+                    <div>
+                        <h3>Journal Digital</h3>
+                        <p>A experiência de registrar e organizar tudo isso utilizando ferramentas digitais.</p>
+                    </div>
+                </article>
+            </section>
+        </section>
+        <section>
+            <h4>E se o journal fosse digital?</h4>
+            <p>O papel tem suas próprias possibilidades: textura, recortes, desenhos, fotografias e páginas que carregam marcas de quem as criou.</p>
+            <p>O meio digital permite experimentar essas ideias de outra maneira.</p>
+            <p>É possível reorganizar elementos, combinar diferentes tipos de conteúdo, testar novas composições e guardar cada criação sem precisar começar uma nova página física.</p>
+            <p>O Collage-journal nasce justamente desse encontro: a liberdade visual da colagem com a flexibilidade do digital.</p>
+        </section>
+        <section>
+            <h4>Pronto para criar uma página?</h4>
+            <p>Tente criar a sua:</p>
+            <button><a href="{{ url_for('create') }}" class="btn">Criar meu journal</a></button>
+        </section>
+    </main>
+{% endblock %}

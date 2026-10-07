@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/image-from-rawpixel-id-6215091-png.png') }}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <title>{% block title %}Collage-journal{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{{ url_for('index') }}">Collage-journal</a>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarContent"
+                    aria-controls="navbarContent"
+                    aria-expanded="false"
+                    aria-label="Abrir menu"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.endpoint == 'index' %}active{% endif %}" href="{{ url_for('index') }}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.endpoint == 'make' %}active{% endif %}" href="{{ url_for('make') }}">Como funciona</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.endpoint == 'create' %}active{% endif %}" href="{{ url_for('create') }}">Criar</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+        {% block content %}
+        {% endblock %}
+    <button
+        type="button"
+        class="btn btn-outline-dark bug-button"
+        data-bs-toggle="modal"
+        data-bs-target="#bugModal"
+    >
+        <i class="bi bi-bug"></i>
+    </button>
+    <div
+        class="modal fade"
+        id="bugModal"
+        tabindex="-1"
+        aria-labelledby="bugModalLabel"
+        aria-hidden="true"
+    >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title"id="bugModalLabel">Encontrou um problema?</h2>
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Fechar"
+                    ></button>
+                </div>
+                <div class="modal-body">
+                    <p>Conte para nós o que aconteceu.</p>
+                    <form id="bugForm">
+                        <div class="mb-3">
+                            <label for="bugDescription" class="form-label">Descrição do problema</label>
+                            <textarea
+                                class="form-control"
+                                id="bugDescription"
+                                rows="5"
+                                placeholder="Descreva o problema..."
+                                required
+                            ></textarea>
+                        </div>
+                        <div
+                            id="bugMessage"
+                            class="alert alert-dark d-none"
+                            role="alert"
+                        >
+                            Mensagem enviada com sucesso!
+                        </div>
+                        <button type="submit" class="btn btn-dark">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="topo_footer"></div>
+        <div class="conteudo_footer">
+            <p>@todos os direitos reservados</p>
+            <p>...</p>
+            <p>Isabele Camargo Portela - Atividade 3 - Flask_AWS_EC2</p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% block scripts %}
+    {% endblock %}
+</body>
+</html>

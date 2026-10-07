@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}
+Collage-journal | Como funciona
+{% endblock %}
+
+{% block content %}
+
+    <main class="make-page">
+        <section>
+            <h4>Como criar um journal?</h4>
+            <p>Não existe uma fórmula.</p>
+            <p>Mas se você não sabe por onde começar, comece pelo simples.</p>
+            <p>Escolha algo para registrar, reúna alguns elementos e monte sua página do seu jeito.</p>
+        </section>
+        <section>
+            <article>
+                <h5>01 · Registre</h5>
+                <p>Comece com uma ideia.</p>
+                <p>Pode ser algo que aconteceu hoje, uma memória, uma frase, uma fotografia, uma lista ou qualquer coisa que você queira guardar.</p>
+                <p>Você não precisa saber como a página vai ficar.</p>
+                <p>Primeiro, registre.</p>
+            </article>
+            <article>
+                <h5>02 · Escolha</h5>
+                <p>Agora reúna os elementos que fazem parte da sua página.</p>
+                <p>Fotografias, cores, pequenos textos, datas, títulos, frases ou qualquer outro detalhe que ajude a contar aquela história.</p>
+                <p>Nem tudo precisa ter uma função.</p>
+                <p>Às vezes, você escolhe alguma coisa simplesmente porque gosta dela.</p>
+            </article>
+            <article>
+                <h5>03 · Componha</h5>
+                <p>Agora começa a parte mais livre.</p>
+                <p>Organize os elementos na página, experimente diferentes posições, tamanhos e combinações.</p>
+                <p>Uma fotografia pode ficar no centro.</p>
+                <p>Um texto pode ficar quase escondido.</p>
+                <p>Uma anotação pode ocupar apenas um canto.</p>
+                <p>Não existe uma composição correta.</p>
+            </article>
+            <article>
+                <h5>04 · Guarde</h5>
+                <p>Quando sua página estiver pronta, é hora de guardar.</p>
+                <p>Salve sua criação e volte a ela quando quiser.</p>
+                <p>Uma página pode registrar um dia.</p>
+                <p>Várias páginas podem registrar uma fase inteira.</p>
+                <p>E, com o tempo, pequenas páginas começam a formar uma coleção de momentos.</p>
+            </article>
+            <article>
+                <h5>E se você não souber por onde começar?</h5>
+                <p>Comece com uma data.</p>
+                <p>Depois uma palavra.</p>
+                <p>Depois uma imagem.</p>
+                <p>O resto pode aparecer no caminho.</p>
+                <button><a href="{{ url_for('create') }}">Criar meu journal</a></button>
+            </article>
+        </section>
+    </main>
+
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}
+Collage-journal | Criar
+{% endblock %}
+
+{% block content %}
+
+    <main class="container-fluid create-page">
+        <section class="create-header">
+            <h1>Crie sua página</h1>
+            <p>Monte sua própria composição e transforme suas ideias em uma página de journal.</p>
+        </section>
+        <section class="file-name-section">
+            <div class="container">
+                <label for="fileName" class="form-label">Nome da página</label>
+                <input type="text" class="form-control" id="fileName" placeholder="ex: meu-journal">
+            </div>
+        </section>
+        <section class="editor container-fluid">
+            <div class="row">
+                <aside class="col-lg-3 editor-sidebar">
+                    <h2>Elementos</h2>
+                    <div class="tool-section">
+                        <h3>Texto</h3>
+                        <button type="button" id="addText" class="btn btn-outline-dark" >+ Adicionar texto</button>
+                    </div>
+                    <div class="tool-section">
+                        <h3>Imagens</h3>
+                        <div class="image-options">
+                            <button class="image-option" data-image="img1">
+                                <img src="{{ url_for('static', filename='img/image-from-rawpixel-id-2339490-png.png') }}" alt="Imagem 1" >
+                            </button>
+                            <button class="image-option" data-image="img2">
+                                <img src="{{ url_for('static', filename='img/image-from-rawpixel-id-2340619-png.png') }}" alt="Imagem 2" >
+                            </button>
+                            <button class="image-option" data-image="img3">
+                                <img src="{{ url_for('static', filename='img/image-from-rawpixel-id-3958798-png.png') }}" alt="Imagem 3">
+                            </button>
+                            <button class="image-option" data-image="img3">
+                                <img src="{{ url_for('static', filename='img/image-from-rawpixel-id-4084844-png.png') }}" alt="Imagem 3">
+                            </button>
+                            <button class="image-option" data-image="img3">
+                                <img src="{{ url_for('static', filename='img/image-from-rawpixel-id-4096169-png.png') }}" alt="Imagem 3">
+                            </button>
+                            <button class="image-option" data-image="img3">
+                                <img src="{{ url_for('static', filename='img/image-from-rawpixel-id-6215091-png.png') }}" alt="Imagem 3">
+                            </button>
+                            <button class="image-option" data-image="img3">
+                                <img src="{{ url_for('static', filename='img/image-from-rawpixel-id-6512210-png.png') }}" alt="Imagem 3">
+                            </button>
+                            <button class="image-option" data-image="img3">
+                                <img src="{{ url_for('static', filename='img/image-from-rawpixel-id-6597094-png.png') }}" alt="Imagem 3">
+                            </button>
+                        </div>
+                    </div>
+                </aside>
+                <section class="col-lg-9 editor-workspace">
+                    <div class="canvas-container">
+                        <canvas id="journalCanvas" width="900" height="700">
+                        </canvas>
+                    </div>
+                </section>
+            </div>
+        </section>
+        <section class="save-section text-center">
+            <button type="button" class="btn btn-dark" id="saveJournal">
+                <span
+                    class="spinner-border spinner-border-sm d-none"
+                    id="saveSpinner"
+                    aria-hidden="true"
+                ></span>
+                <span id="saveText">Salvar página</span>
+            </button>
+        </section>
+    </main>
+
+{% endblock %}
+
+{% block scripts %}
+
+    <script src="{{ url_for('static', filename='js/create.js') }}"></script>
+
+{% endblock %}
