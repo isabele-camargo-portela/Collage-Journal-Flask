@@ -1,49 +1,10 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "base.html" %}
 
-    <link rel="icon" type="image/png" href="./img/image-from-rawpixel-id-6215091-png.png">
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    
-    <title>Collage-Journal | Home</title>
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="index.html">Collage-journal</a>
-                <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarContent"
-                    aria-controls="navbarContent"
-                    aria-expanded="false"
-                    aria-label="Abrir menu"
-                >
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarContent">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="make.html">Como funciona</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="create.html">Criar</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+{% block title %}
+Collage-journal | Home
+{% endblock %}
+
+{% block content %}
     <main>
         <section class="banner">
             <div class="conteudo_banner">
@@ -69,28 +30,28 @@
             <h4>Um journal não precisa ser uma coisa só.</h4>
             <section class="carrocel">
                 <article class="card">
-                    <img src="./img/heather-green-gUSgDLS1ua4-unsplash.jpg">
+                    <img src="{{ url_for('static', filename='img/heather-green-gUSgDLS1ua4-unsplash.jpg') }}">
                     <div>
                         <h3>Diário</h3>
                         <p>Um espaço para escrever sobre acontecimentos, pensamentos e sentimentos do cotidiano.</p>
                     </div>
                 </article>
                 <article class="card">
-                    <img src="./img/jazmin-quaynor-bm9zWKi_c9Y-unsplash.jpg">
+                    <img src="{{ url_for('static', filename='img/jazmin-quaynor-bm9zWKi_c9Y-unsplash.jpg') }}">
                     <div>
                         <h3>Bullet Journal</h3>
                         <p>Uma maneira flexível de organizar tarefas, planos, hábitos e compromissos.</p>
                     </div>
                 </article>
                 <article class="card">
-                    <img src="./img/allie-feeley-vX_Y9bY-6Os-unsplash.jpg">
+                    <img src="{{ url_for('static', filename='img/allie-feeley-vX_Y9bY-6Os-unsplash.jpg') }}">
                     <div>
                         <h3>Collage Journal</h3>
                         <p>Uma combinação de imagens, textos, desenhos, cores e diferentes elementos visuais.</p>
                     </div>
                 </article>
                 <article class="card">
-                    <img src="./img/annie-spratt-jCrftLHe3ec-unsplash.jpg">
+                    <img src="{{ url_for('static', filename='img/annie-spratt-jCrftLHe3ec-unsplash.jpg') }}">
                     <div>
                         <h3>Journal Digital</h3>
                         <p>A experiência de registrar e organizar tudo isso utilizando ferramentas digitais.</p>
@@ -108,68 +69,7 @@
         <section>
             <h4>Pronto para criar uma página?</h4>
             <p>Tente criar a sua:</p>
-            <button><a href="create.html">Criar meu journal</a></button>
+            <button><a href="{{ url_for('create') }}" class="btn">Criar meu journal</a></button>
         </section>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <button
-        type="button"
-        class="btn btn-outline-dark bug-button"
-        data-bs-toggle="modal"
-        data-bs-target="#bugModal"
-    >
-        <i class="bi bi-bug"></i>
-    </button>
-    <div
-        class="modal fade"
-        id="bugModal"
-        tabindex="-1"
-        aria-labelledby="bugModalLabel"
-        aria-hidden="true"
-    >
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2 class="modal-title"id="bugModalLabel">Encontrou um problema?</h2>
-                    <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Fechar"
-                    ></button>
-                </div>
-                <div class="modal-body">
-                    <p>Conte para nós o que aconteceu.</p>
-                    <form id="bugForm">
-                        <div class="mb-3">
-                            <label for="bugDescription" class="form-label">Descrição do problema</label>
-                            <textarea
-                                class="form-control"
-                                id="bugDescription"
-                                rows="5"
-                                placeholder="Descreva o problema..."
-                                required
-                            ></textarea>
-                        </div>
-                        <div
-                            id="bugMessage"
-                            class="alert alert-dark d-none"
-                            role="alert"
-                        >
-                            Mensagem enviada com sucesso!
-                        </div>
-                        <button type="submit" class="btn btn-dark">Enviar</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <footer>
-        <div class="topo_footer"></div>
-        <div class="conteudo_footer">
-            <p>@todos os direitos reservados</p>
-        </div>
-    </footer>
-    <script src="./js/script.js"></script>
-</body>
-</html>
+{% endblock %}

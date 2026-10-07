@@ -410,12 +410,6 @@ const campoNome =
 const textoSalvar =
     document.getElementById("saveText");
 
-const formularioBug =
-    document.getElementById("bugForm");
-
-const mensagemBug =
-    document.getElementById("bugMessage");
-
 botaoSalvar.addEventListener("click", () => {
 
     let nome =
