@@ -62,12 +62,22 @@ header {
         color 0.2s ease;
 }
 
-.nav-link:hover,
-.nav-link.active {
+.nav-link:hover, .nav-link.active {
     background-color: #303034;
     color: #fefefe !important;
 }
 
+.navbar-toggler {
+    border: none !important;
+}
+
+.navbar-toggler:focus {
+    border: 3px solid #303034 !important;
+    border-radius: 0px !important;
+    text-decoration: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
 
 main {
     width: 100%;
@@ -135,6 +145,112 @@ main {
     background-color: #e2e2e0;
 }
 
+.sign-up {
+    padding-top: 7rem;
+    padding-bottom: 5rem;
+}
+
+#cadastro {
+    background-color: #fefefe;
+    border: 1px solid #303034;
+    border-radius: 0;
+
+    flex: 1;
+    min-width: 600px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    overflow: hidden;
+
+    box-shadow: 6px 6px 0 #303034;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#cadastro:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0 #303034;
+}
+
+#cadastro img {
+    width: 100%;
+    height: 240px;
+
+    background-color: #d2d2ce;
+
+    object-fit: cover;
+}
+
+.cadastro {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+}
+
+.cadastro div {
+    align-items: stretch;
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: left; 
+}
+
+.cadastro .senha {
+    padding: 20px;
+    justify-content: space-between;
+
+    display: flex;
+    flex-direction: row;
+    gap:20px;
+
+    border: 1px solid #303034;
+    border-style: dashed;
+    border-width: 1px;
+}
+
+.cadastro div.senha:hover {
+    border-style: groove;
+}
+
+.cadastro input, .cadastro textarea{
+    background-color: #fefefe;
+
+    border: 1px solid #303034;
+    border-radius: 0;
+}
+
+.cadastro input:focus, .cadastro textarea:focus{
+    outline: none;
+    border-color: #303034;
+    box-shadow: 3px 3px 0 #303034;
+}
+
+.cadastro button {
+    margin-top: 2rem;
+    padding: 0;
+
+    border: 2px solid #303034;
+    border-radius: 0;
+
+    background-color: #303034;
+    color: #fefefe;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.cadastro button:hover {
+    background-color: #fefefe;
+    color: #303034;
+    transform: translateY(-3px);
+}
 
 main > section:not(.banner) {
     max-width: 1100px;

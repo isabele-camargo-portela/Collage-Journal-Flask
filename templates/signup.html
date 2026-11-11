@@ -1,25 +1,39 @@
 {% extends "base.html" %}
 
 {% block title %}
-Collage-journal | Signin
+Collage-journal | Sign Up
 {% endblock %}
 
 {% block content %}
 
-<main>
-    <section>
-        <form>
-            <label class="form-label" type="text" name="nome" placeholder="Nome" required></label>
-            <input >
-            <label class="form-label" type="text" name="email" placeholder="Email@.com" required></label>
-            <input >
-                <div class="senha">
-                    <label class="form-label" type="password" name="senha" placeholder="Senha" required></label>
-                    <input >
-                    <label class="form-label" type="password" name="senha" placeholder="Confirme a senha" required></label>
-                    <input >
+<main class="sign-up">
+    <section id="cadastro">
+        <h3>Crie sua conta</h3>
+        <img src="{{ url_for('static', filename='img/jazmin-quaynor-bm9zWKi_c9Y-unsplash.jpg') }}">
+        <form class="cadastro">
+            <div class="nome">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" placeholder="Nome" required>
+            </div>
+            <div class="email">
+                <label for="email">Email</label>
+                <input type="text" name="email" placeholder="Email@.com" required>
+            </div>
+            <div class="senha">
+                <div>
+                    <label for="senha">Senha</label>
+                    <input type="password" name="senha" placeholder="Confirme a senha" required>
                 </div>
-            <button type="submit"></button>
+                <div>
+                    <label>Confirmar senha</label>
+                    <input type="password" name="senha" placeholder="Confirme a senha" required>
+                </div>
+            </div>
+            <div class="bio">
+                <label for="bio">Bio</label>
+                <textarea type="textarea" nmae="bio" rows="10" placeholder="Fale um pouco sobre você..."></textarea>
+            </form>
+            <button type="submit">Cadastrar</button>
         </form>
     </section>
 </main>
