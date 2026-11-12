@@ -10,29 +10,29 @@ Collage-journal | Sign Up
     <section id="cadastro">
         <h3>Crie sua conta</h3>
         <img src="{{ url_for('static', filename='img/jazmin-quaynor-bm9zWKi_c9Y-unsplash.jpg') }}">
-        <form class="cadastro">
+        <form id="cadastroForm" class="cadastro">
             <div class="nome">
                 <label for="nome">Nome</label>
-                <input type="text" name="nome" placeholder="Nome" required>
+                <input type="text" id="nome" name="nome" placeholder="Nome" required>
             </div>
             <div class="email">
                 <label for="email">Email</label>
-                <input type="text" name="email" placeholder="Email@.com" required>
+                <input type="email" id="email" name="email" placeholder="Email@.com" required>
             </div>
             <div class="senha">
                 <div>
                     <label for="senha">Senha</label>
-                    <input type="password" name="senha" placeholder="Confirme a senha" required>
+                    <input type="password" id="senha" name="senha" minlength="8" placeholder="Senha" required>
                 </div>
                 <div>
-                    <label>Confirmar senha</label>
-                    <input type="password" name="senha" placeholder="Confirme a senha" required>
+                    <label for="confirmar_senha">Confirmar senha</label>
+                    <input type="password" id="confirmar_senha" name="confirmar_senha" minlength="8" placeholder="Confirme a senha" required>
                 </div>
             </div>
             <div class="bio">
                 <label for="bio">Bio</label>
-                <textarea type="textarea" nmae="bio" rows="10" placeholder="Fale um pouco sobre você..."></textarea>
-            </form>
+                <textarea id="bio" name="bio" rows="10" placeholder="Fale um pouco sobre você..."></textarea>
+            </div>
             <button type="submit">Cadastrar</button>
         </form>
     </section>
@@ -42,6 +42,6 @@ Collage-journal | Sign Up
 
 {% block scripts %}
 
-    <script src="{{ url_for('static', filename='js/signin.js') }}"></script>
+    <script src="{{ url_for('static', filename='./js/signup.js') }}"></script>
 
 {% endblock %}
