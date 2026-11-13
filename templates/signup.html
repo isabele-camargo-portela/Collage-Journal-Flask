@@ -10,23 +10,27 @@ Collage-journal | Sign Up
     <section id="cadastro">
         <h3>Crie sua conta</h3>
         <img src="{{ url_for('static', filename='img/jazmin-quaynor-bm9zWKi_c9Y-unsplash.jpg') }}">
-        <form id="cadastroForm" class="cadastro">
+        <form id="cadastroForm" class="cadastro" novalidate>
             <div class="nome">
                 <label for="nome">Nome</label>
                 <input type="text" id="nome" name="nome" placeholder="Nome" required>
+                <span class="erro-campo" data-erro-de="nome"></span>
             </div>
             <div class="email">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="Email@.com" required>
+                <span class="erro-campo" data-erro-de="email"></span>
             </div>
             <div class="senha">
                 <div>
                     <label for="senha">Senha</label>
                     <input type="password" id="senha" name="senha" minlength="8" placeholder="Senha" required>
+                    <span class="erro-campo" data-erro-de="senha"></span>
                 </div>
                 <div>
                     <label for="confirmar_senha">Confirmar senha</label>
                     <input type="password" id="confirmar_senha" name="confirmar_senha" minlength="8" placeholder="Confirme a senha" required>
+                    <span class="erro-campo" data-erro-de="confirmar_senha"></span>
                 </div>
             </div>
             <div class="bio">
@@ -35,6 +39,7 @@ Collage-journal | Sign Up
             </div>
             <button type="submit">Cadastrar</button>
         </form>
+        <div id="mensagem-status" role="status"></div>  
     </section>
 </main>
 
