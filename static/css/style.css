@@ -341,6 +341,15 @@ main p {
     line-height: 1.6;
 }
 
+#novos-usuarios{
+    display: flex;
+    flex-direction: row;
+}
+
+#novos-usuarios img{
+    border-radius: 50%;
+}
+
 main > section:last-child {
     text-align: center;
 }
