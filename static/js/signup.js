@@ -84,7 +84,10 @@ formularioCadastro.addEventListener("submit", function(evento) {
         formularioValido = false;
     }
 
-    if (!formularioValido) {
-        return;
+    try {
+        
+    }
+    catch {
+
     }
 });
