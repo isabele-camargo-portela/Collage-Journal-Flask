@@ -252,6 +252,14 @@ main {
     transform: translateY(-3px);
 }
 
+.erro-campo{
+    color: #303034;
+    font-size: 12px;
+    font-style: italic;
+    background-color: rgba(244, 71, 71, 0.5);
+    margin-top: 5px;
+}
+
 main > section:not(.banner) {
     max-width: 1100px;
 
