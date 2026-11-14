@@ -35,18 +35,20 @@ Collage-journal | Sign Up
             </div>
             <div class="perfil">
                 <div class="foto">
-                    <label for="foto" class="foto-perfil">
-                        <p>Escolha uma foto para seu perfil</p>
-                        <div class="upload-foto"></div>
-                    </label>
-                    <input type="file" id="foto" name="foto" accept=".png">
-                    <span class="erro-campo" data-erro-de="foto"></span>
+                    <label class="titulo-foto">Foto de perfil</label>
+                    <div class="preview-foto">
+                        <img id="previewFoto" src="{{ url_for('static', filename='img/avatar-padrao.png') }}" alt="Prévia da foto de perfil">
+                    </div>
+                    <span id="nomeArquivo">Nenhuma imagem selecionada</span>
+                    <label for="foto" class="botao-foto">Escolher imagem</label>
+                    <input type="file" id="foto" name="foto" accept="image/png">
                 </div>
                 <div class="bio">
-                    <label for="bio">Bio</label>
+                    <label class="titulo-bio" for="bio">Bio</label>
                     <textarea id="bio" name="bio" rows="10" placeholder="Fale um pouco sobre você..."></textarea>
                 </div>
             </div>
+            <hr class="linha-horizontal">
             <button type="submit">Cadastrar</button>
         </form>
         <div id="mensagem-status" role="status"></div>  

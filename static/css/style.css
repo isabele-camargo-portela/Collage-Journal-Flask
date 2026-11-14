@@ -206,63 +206,106 @@ main {
 
 .cadastro .senha {
     padding: 20px;
-    justify-content: space-between;
 
     display: flex;
     flex-direction: row;
-    gap:20px;
+    gap: 20px;
+    justify-content: space-between;
 
     border: 1px solid #303034;
     border-style: dashed;
     border-width: 1px;
 }
 
-.cadastro div.senha:hover {
+.cadastro .senha:hover {
     border-style: groove;
+}
+
+.senha > div {
+    width: 100%;
+    text-align: left;
 }
 
 .perfil {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-    padding: 20px;
 }
 
-.foto {
-    grid-column: 1/2;
+.foto, .bio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
-.foto input {
-    margin-top: 2rem;
-    padding: 0;
+.titulo-foto, .titulo-bio {
+    align-self: flex-start;
+}
 
-    border: 2px solid #303034;
-    border-radius: 0;
+.preview-foto {
+    width: 100%;
+    height: 220px;
 
+    border: 1px solid #303034;
+    background-color: #e2e2e0;
+
+    overflow: hidden;
+}
+
+.preview-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.botao-foto {
+    width: 100%;
     background-color: #303034;
     color: #fefefe;
+
+    border: 2px solid #303034;
 }
 
-.foto input:hover {
+.botao-foto:hover {
     background-color: #fefefe;
     color: #303034;
 }
 
-.bio {
-    grid-column: 2/3;
+#foto {
+    display: none;
+}
+
+#nomeArquivo {
+    font-size: 12px;
+    overflow-wrap: anywhere;
+    text-align: left;
+    align-self: flex-start;
 }
 
 .cadastro input, .cadastro textarea{
+    width: 100%;
     background-color: #fefefe;
 
     border: 1px solid #303034;
     border-radius: 0;
 }
 
+.cadastro textarea {
+    height: 100%;
+}
+
 .cadastro input:focus, .cadastro textarea:focus{
     outline: none;
     border-color: #303034;
     box-shadow: 3px 3px 0 #303034;
+}
+
+.linha-horizontal {
+  border: none;
+  height: 1px;
+  background-color: #333333;
+  margin-top: 20px;
 }
 
 .cadastro button {
