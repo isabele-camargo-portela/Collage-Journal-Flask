@@ -156,7 +156,7 @@ main {
     border-radius: 0;
 
     flex: 1;
-    min-width: 600px;
+    max-width: 600px;
 
     display: flex;
     flex-direction: column;
@@ -191,8 +191,11 @@ main {
     gap: 20px;
     
 }
+.cadastro label {
+    justify-items: left;
+}
 
-.cadastro div {
+.cadastro > .nome, .cadastro > .email  {
     align-items: stretch;
     flex: 1;
     width: 100%;
@@ -203,32 +206,105 @@ main {
 
 .cadastro .senha {
     padding: 20px;
-    justify-content: space-between;
 
     display: flex;
     flex-direction: row;
-    gap:20px;
+    gap: 20px;
+    justify-content: space-between;
 
     border: 1px solid #303034;
     border-style: dashed;
     border-width: 1px;
 }
 
-.cadastro div.senha:hover {
+.cadastro .senha:hover {
     border-style: groove;
 }
 
+.senha > div {
+    width: 100%;
+    text-align: left;
+}
+
+.perfil {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.foto, .bio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.titulo-foto, .titulo-bio {
+    align-self: flex-start;
+}
+
+.preview-foto {
+    width: 100%;
+    border: 1px solid #303034;
+    background-color: #e2e2e0;
+
+    overflow: hidden;
+}
+
+.preview-foto img {
+    width: 100%;          
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block; 
+}
+
+.botao-foto {
+    width: 100%;
+    background-color: #303034;
+    color: #fefefe;
+
+    border: 2px solid #303034;
+}
+
+.botao-foto:hover {
+    background-color: #fefefe;
+    color: #303034;
+}
+
+#foto {
+    display: none;
+}
+
+#nomeArquivo {
+    font-size: 12px;
+    overflow-wrap: anywhere;
+    text-align: left;
+    align-self: flex-start;
+}
+
 .cadastro input, .cadastro textarea{
+    width: 100%;
     background-color: #fefefe;
 
     border: 1px solid #303034;
     border-radius: 0;
 }
 
+.cadastro textarea {
+    height: 100%;
+}
+
 .cadastro input:focus, .cadastro textarea:focus{
     outline: none;
     border-color: #303034;
     box-shadow: 3px 3px 0 #303034;
+}
+
+.linha-horizontal {
+  border: none;
+  height: 1px;
+  background-color: #333333;
+  margin-top: 20px;
 }
 
 .cadastro button {
@@ -1141,14 +1217,13 @@ footer {
         box-shadow: 0px 0px 0 #303034;
     }
 
-    #cadastro img {
+    #cadastro > img {
         height: 100px;
     }
 
     #cadastro .senha {
         flex-direction: column;
     }
-
 }
 
 @media only screen and (max-width: 400px) {
@@ -1165,5 +1240,9 @@ footer {
 
     .bug-button {
         font-size: 0.7rem;
+    }
+
+    .perfil {
+        grid-template-columns: 1fr;
     }
 }
