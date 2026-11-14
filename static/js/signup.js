@@ -5,9 +5,23 @@ const campoNome = document.getElementById("nome");
 const campoEmail = document.getElementById("email");
 const campoSenha = document.getElementById("senha");
 const campoConfirmarSenha = document.getElementById("confirmar_senha");
+const campoFoto = document.getElementById("foto");
+const previewFoto = document.getElementById("previewFoto");
+const nomeArquivo = document.getElementById("nomeArquivo");
 const campoBio = document.getElementById("bio");
 
 const mensagemStatus = document.getElementById("mensagem-status");
+
+campoFoto.addEventListener("change", function() {
+
+    const arquivo = campoFoto.files[0];
+
+    if (arquivo) {
+        previewFoto.src = URL.createObjectURL(arquivo);
+        nomeArquivo.textContent = arquivo.name;
+    }
+
+});
 
 //fução para tratamento de erro
 function mostrarMensagem(mensagem, tipo = "erro") {
