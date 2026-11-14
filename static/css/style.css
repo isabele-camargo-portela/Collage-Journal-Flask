@@ -245,8 +245,6 @@ main {
 
 .preview-foto {
     width: 100%;
-    height: 220px;
-
     border: 1px solid #303034;
     background-color: #e2e2e0;
 
@@ -254,9 +252,10 @@ main {
 }
 
 .preview-foto img {
-    width: 100%;
-    height: 100%;
+    width: 100%;          
+    aspect-ratio: 1 / 1;
     object-fit: cover;
+    display: block; 
 }
 
 .botao-foto {
@@ -1218,14 +1217,13 @@ footer {
         box-shadow: 0px 0px 0 #303034;
     }
 
-    #cadastro img {
+    #cadastro > img {
         height: 100px;
     }
 
     #cadastro .senha {
         flex-direction: column;
     }
-
 }
 
 @media only screen and (max-width: 400px) {
@@ -1242,5 +1240,9 @@ footer {
 
     .bug-button {
         font-size: 0.7rem;
+    }
+
+    .perfil {
+        grid-template-columns: 1fr;
     }
 }
