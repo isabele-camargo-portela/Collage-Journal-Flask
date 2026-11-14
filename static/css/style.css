@@ -156,7 +156,7 @@ main {
     border-radius: 0;
 
     flex: 1;
-    min-width: 600px;
+    max-width: 600px;
 
     display: flex;
     flex-direction: column;
@@ -191,8 +191,11 @@ main {
     gap: 20px;
     
 }
+.cadastro label {
+    justify-items: left;
+}
 
-.cadastro div {
+.cadastro > .nome, .cadastro > .email  {
     align-items: stretch;
     flex: 1;
     width: 100%;
@@ -216,6 +219,37 @@ main {
 
 .cadastro div.senha:hover {
     border-style: groove;
+}
+
+.perfil {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+.foto {
+    grid-column: 1/2;
+}
+
+.foto input {
+    margin-top: 2rem;
+    padding: 0;
+
+    border: 2px solid #303034;
+    border-radius: 0;
+
+    background-color: #303034;
+    color: #fefefe;
+}
+
+.foto input:hover {
+    background-color: #fefefe;
+    color: #303034;
+}
+
+.bio {
+    grid-column: 2/3;
 }
 
 .cadastro input, .cadastro textarea{

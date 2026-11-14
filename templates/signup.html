@@ -33,9 +33,19 @@ Collage-journal | Sign Up
                     <span class="erro-campo" data-erro-de="confirmar_senha"></span>
                 </div>
             </div>
-            <div class="bio">
-                <label for="bio">Bio</label>
-                <textarea id="bio" name="bio" rows="10" placeholder="Fale um pouco sobre você..."></textarea>
+            <div class="perfil">
+                <div class="foto">
+                    <label for="foto" class="foto-perfil">
+                        <p>Escolha uma foto para seu perfil</p>
+                        <div class="upload-foto"></div>
+                    </label>
+                    <input type="file" id="foto" name="foto" accept=".png">
+                    <span class="erro-campo" data-erro-de="foto"></span>
+                </div>
+                <div class="bio">
+                    <label for="bio">Bio</label>
+                    <textarea id="bio" name="bio" rows="10" placeholder="Fale um pouco sobre você..."></textarea>
+                </div>
             </div>
             <button type="submit">Cadastrar</button>
         </form>
