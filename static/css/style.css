@@ -62,12 +62,22 @@ header {
         color 0.2s ease;
 }
 
-.nav-link:hover,
-.nav-link.active {
+.nav-link:hover, .nav-link.active {
     background-color: #303034;
     color: #fefefe !important;
 }
 
+.navbar-toggler {
+    border: none !important;
+}
+
+.navbar-toggler:focus {
+    border: 3px solid #303034 !important;
+    border-radius: 0px !important;
+    text-decoration: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
 
 main {
     width: 100%;
@@ -135,6 +145,196 @@ main {
     background-color: #e2e2e0;
 }
 
+.sign-up {
+    padding-top: 7rem;
+    padding-bottom: 5rem;
+}
+
+#cadastro {
+    background-color: #fefefe;
+    border: 1px solid #303034;
+    border-radius: 0;
+
+    flex: 1;
+    max-width: 600px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    overflow: hidden;
+
+    box-shadow: 6px 6px 0 #303034;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#cadastro:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0 #303034;
+}
+
+#cadastro img {
+    width: 100%;
+    height: 240px;
+
+    background-color: #d2d2ce;
+
+    object-fit: cover;
+}
+
+.cadastro {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+}
+.cadastro label {
+    justify-items: left;
+}
+
+.cadastro > .nome, .cadastro > .email  {
+    align-items: stretch;
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: left; 
+}
+
+.cadastro .senha {
+    padding: 20px;
+
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: space-between;
+
+    border: 1px solid #303034;
+    border-style: dashed;
+    border-width: 1px;
+}
+
+.cadastro .senha:hover {
+    border-style: groove;
+}
+
+.senha > div {
+    width: 100%;
+    text-align: left;
+}
+
+.perfil {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.foto, .bio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.titulo-foto, .titulo-bio {
+    align-self: flex-start;
+}
+
+.preview-foto {
+    width: 100%;
+    border: 1px solid #303034;
+    background-color: #e2e2e0;
+
+    overflow: hidden;
+}
+
+.preview-foto img {
+    width: 100%;          
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block; 
+}
+
+.botao-foto {
+    width: 100%;
+    background-color: #303034;
+    color: #fefefe;
+
+    border: 2px solid #303034;
+}
+
+.botao-foto:hover {
+    background-color: #fefefe;
+    color: #303034;
+}
+
+#foto {
+    display: none;
+}
+
+#nomeArquivo {
+    font-size: 12px;
+    overflow-wrap: anywhere;
+    text-align: left;
+    align-self: flex-start;
+}
+
+.cadastro input, .cadastro textarea{
+    width: 100%;
+    background-color: #fefefe;
+
+    border: 1px solid #303034;
+    border-radius: 0;
+}
+
+.cadastro textarea {
+    height: 100%;
+}
+
+.cadastro input:focus, .cadastro textarea:focus{
+    outline: none;
+    border-color: #303034;
+    box-shadow: 3px 3px 0 #303034;
+}
+
+.linha-horizontal {
+  border: none;
+  height: 1px;
+  background-color: #333333;
+  margin-top: 20px;
+}
+
+.cadastro button {
+    margin-top: 2rem;
+    padding: 0;
+
+    border: 2px solid #303034;
+    border-radius: 0;
+
+    background-color: #303034;
+    color: #fefefe;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.cadastro button:hover {
+    background-color: #fefefe;
+    color: #303034;
+    transform: translateY(-3px);
+}
+
+.erro-campo{
+    color: #303034;
+    font-size: 12px;
+    font-style: italic;
+    background-color: rgba(244, 71, 71, 0.5);
+    margin-top: 5px;
+}
 
 main > section:not(.banner) {
     max-width: 1100px;
@@ -223,6 +423,15 @@ main p {
 
     font-size: 0.9rem;
     line-height: 1.6;
+}
+
+#novos-usuarios{
+    display: flex;
+    flex-direction: row;
+}
+
+#novos-usuarios img{
+    border-radius: 50%;
 }
 
 main > section:last-child {
@@ -796,6 +1005,10 @@ footer {
     .editor-sidebar {
         min-height: auto;
     }
+
+    #cadastro {
+        min-width: auto;
+    }
 }
 
 
@@ -987,6 +1200,30 @@ footer {
 
         padding: 2rem 1rem;
     }
+
+    #cadastro {
+        border: 0px 1px solid #303034;
+        margin: 0;
+        width: 100%;
+        box-shadow: 0px;
+
+        transition:
+            transform 0.0s ease,
+            box-shadow 0.0s ease;
+    }
+
+    #cadastro:hover {
+        transform: translate(0px, 0px);
+        box-shadow: 0px 0px 0 #303034;
+    }
+
+    #cadastro > img {
+        height: 100px;
+    }
+
+    #cadastro .senha {
+        flex-direction: column;
+    }
 }
 
 @media only screen and (max-width: 400px) {
@@ -1003,5 +1240,9 @@ footer {
 
     .bug-button {
         font-size: 0.7rem;
+    }
+
+    .perfil {
+        grid-template-columns: 1fr;
     }
 }
