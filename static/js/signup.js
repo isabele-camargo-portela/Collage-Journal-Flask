@@ -12,6 +12,7 @@ const campoBio = document.getElementById("bio");
 
 const mensagemStatus = document.getElementById("mensagem-status");
 
+// função para exbir o preview da foto de perifl  
 campoFoto.addEventListener("change", function() {
 
     const arquivo = campoFoto.files[0];
@@ -23,7 +24,7 @@ campoFoto.addEventListener("change", function() {
 
 });
 
-//fução para tratamento de erro
+// fução para tratamento de erro
 function mostrarMensagem(mensagem, tipo = "erro") {
     mensagemStatus.textContent = mensagem;
     mensagemStatus.style.display = "block";
@@ -50,8 +51,8 @@ function mostrarErroCampo(campo, mensagem) {
     }
 }
 
-//validação do formulario
-formularioCadastro.addEventListener("submit", function(evento) {
+// validação do formulario
+formularioCadastro.addEventListener("submit", async function(evento) {
 
     evento.preventDefault();
 
@@ -61,6 +62,7 @@ formularioCadastro.addEventListener("submit", function(evento) {
     const email = campoEmail.value.trim();
     const senha = campoSenha.value;
     const confirmar_senha = campoConfirmarSenha.value;
+    const foto = campoFoto.value;
     const bio = campoBio.value;
 
     let formularioValido = true;
@@ -98,10 +100,38 @@ formularioCadastro.addEventListener("submit", function(evento) {
         formularioValido = false;
     }
 
-    try {
-        
-    }
-    catch {
+    // para pegar os dados
+    const dadosCadastro = new FormData();
 
+    dadosCadastro.append("nome", nome);
+    dadosCadastro.append("email", email);
+    dadosCadastro.append("senha", senha);
+    dadosCadastro.append("bio", bio);
+
+    // para adicionar a foto somente se uma foi selecionada
+    if (campoFoto.files.length > 0) {
+        dadosCadastro.append("foto", campoFoto.files[0]);
+    }
+
+    // para enviar os dados do cadastro
+    try {
+        const resposta = await fetch("/api/cadastro", {
+            method: "POST",
+            body: dadosCadastro
+        });
+
+        const resultado = await resposta.json();
+
+        if (!resposta.ok) {
+            mostrarMensagem(resultado.mensagem || "Erro ao realizar cadastro.");
+            return;
+        }
+
+        mostrarMensagem(resultado.mensagem, "sucesso");
+
+    }
+    catch (erro) {
+        mostrarMensagem("Não foi possível conectar ao servidor.");
+        console.error(erro);
     }
 });
