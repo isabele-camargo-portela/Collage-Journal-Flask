@@ -1,4 +1,3 @@
-
 const canvas = document.getElementById("journalCanvas");
 const ctx = canvas.getContext("2d");
 

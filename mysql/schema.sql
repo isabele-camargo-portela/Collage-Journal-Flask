@@ -3,7 +3,7 @@ create database collage_journal;
 use collage_journal;
 
 create table usuario (
-    id_usario int auto_increment primary key,
+    id_usuario int auto_increment primary key,
     nome varchar(50) not null,
     email varchar(100) not null,
     senha varchar(225) not null,
