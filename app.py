@@ -111,7 +111,34 @@ def inserir_usuario(nome, email, hash_gerado, foto, bio):
     finally:
         conexao.close()
 
+# insere relato de bug
+def inserir_relato(relato):
+    conexao = None
 
+    try:
+        conexao = get_connection()
+
+        with conexao.cursor() as cursor:
+            cursor.execute(
+                "INSERT INTO relato_bug (relato) VALUES (%s)",
+                (relato,)
+            )
+
+            conexao.commit()
+
+        return True
+
+    except Exception as erro:
+        if conexao:
+            conexao.rollback()
+
+        print(f"Erro ao inserir relato: {erro}")
+
+        return False
+
+    finally:
+        if conexao:
+            conexao.close()
 
 # rotas
 @app.route("/")
@@ -154,7 +181,25 @@ def cadastro_usuario():
             "sucesso": True,
             "mensagem": "Veja seu perfil na área de novos usuários."
         }), 200
-    
+
+@app.route("/api/relato-bug", methods=["POST"])
+def receber_relato():
+
+    relato = request.form.get("relato")
+
+    if not relato or not relato.strip():
+        return jsonify({
+            "sucesso": False,
+            "mensagem": "O relato não pode estar vazio."
+        }), 400
+
+    inserir_relato(relato)
+
+    return jsonify({
+        "sucesso": True,
+        "mensagem": "Relato enviado com sucesso!"
+    }), 200
+
 # app
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
