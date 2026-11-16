@@ -100,6 +100,10 @@ formularioCadastro.addEventListener("submit", async function(evento) {
         formularioValido = false;
     }
 
+    if (!formularioValido) {
+        return;
+    }
+
     // para pegar os dados
     const dadosCadastro = new FormData();
 
@@ -123,7 +127,12 @@ formularioCadastro.addEventListener("submit", async function(evento) {
         const resultado = await resposta.json();
 
         if (!resposta.ok) {
-            mostrarMensagem(resultado.mensagem || "Erro ao realizar cadastro.");
+            if (resultado.campo) {
+                mostrarErroCampo(resultado.campo, resultado.mensagem);
+            } else {
+                mostrarMensagem(resultado.mensagem || "Erro ao realizar cadastro.");
+            }
+
             return;
         }
 
