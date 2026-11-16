@@ -163,7 +163,12 @@ def buscar_novos_usuarios():
                 if usuario["foto"] == None:
                     usuario["foto"] = "/static/img/avatar-padrao.png"
                 else:
-                    usuario["foto"] = "data:image/png;base64," + base64.b64encode(
+                    if usuario["foto"].startswith(b"\x89PNG\r\n\x1a\n"):
+                        formato = "image/png"
+                    else:
+                        formato = "image/jpeg"
+
+                    usuario["foto"] = f"data:{formato};base64," + base64.b64encode(
                         usuario["foto"]
                     ).decode("utf-8")
 
@@ -275,14 +280,18 @@ def cadastro_usuario():
                 "mensagem": "A imagem deve ter no máximo 5 MB."
             }), 400
 
-        # verifica se é png
+        # verifica se é png ou jpeg
         assinatura_png = b"\x89PNG\r\n\x1a\n"
+        assinatura_jpeg = b"\xff\xd8\xff"
 
-        if not imagem_bytes.startswith(assinatura_png):
+        if not (
+            imagem_bytes.startswith(assinatura_png) or
+            imagem_bytes.startswith(assinatura_jpeg)
+        ):
             return jsonify({
                 "sucesso": False,
                 "campo": "foto",
-                "mensagem": "Envie uma imagem PNG válida."
+                "mensagem": "Envie uma imagem PNG ou JPEG válida."
             }), 400
 
     try:
