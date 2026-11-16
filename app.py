@@ -1,7 +1,36 @@
 from flask import Flask, render_template, request, jsonify
 
+
+# importa função de conex]ao
+from db import get_connection
+
 app = Flask(__name__)
 
+
+# para teste de conexão
+@app.route("/api/teste-conexao")
+def teste_conexao():
+    conexao = None
+
+    try:
+        conexao = get_connection()
+
+        return jsonify({
+            "mensagem": "Conexão com o banco estabelecida!"
+        }), 200
+
+    except Exception as erro:
+        return jsonify({
+            "mensagem": "Erro ao conectar com o banco.",
+            "erro": str(erro)
+        }), 500
+
+    finally:
+        if conexao:
+            conexao.close()
+
+
+# rotas
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -31,5 +60,10 @@ def cadastrar_usuario():
         "mensagem": "Dados recebidos com sucesso!"
     }), 200
 
+
+# serviços
+
+
+# app
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
