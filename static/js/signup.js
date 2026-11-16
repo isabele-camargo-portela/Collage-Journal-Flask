@@ -13,16 +13,18 @@ const campoBio = document.getElementById("bio");
 const mensagemStatus = document.getElementById("mensagem-status");
 
 // função para exbir o preview da foto de perifl  
-campoFoto.addEventListener("change", function() {
+if (campoFoto) {
+    campoFoto.addEventListener("change", function() {
 
-    const arquivo = campoFoto.files[0];
+        const arquivo = campoFoto.files[0];
 
-    if (arquivo) {
-        previewFoto.src = URL.createObjectURL(arquivo);
-        nomeArquivo.textContent = arquivo.name;
-    }
+        if (arquivo) {
+            previewFoto.src = URL.createObjectURL(arquivo);
+            nomeArquivo.textContent = arquivo.name;
+        }
 
-});
+    });
+}
 
 // fução para tratamento de erro
 function mostrarMensagem(mensagem, tipo = "erro") {
@@ -52,86 +54,96 @@ function mostrarErroCampo(campo, mensagem) {
 }
 
 // validação do formulario
-formularioCadastro.addEventListener("submit", async function(evento) {
+if (formularioCadastro) {
+    formularioCadastro.addEventListener("submit", async function(evento) {
 
-    evento.preventDefault();
+        evento.preventDefault();
 
-    limparErros();
+        limparErros();
 
-    const nome = campoNome.value.trim();
-    const email = campoEmail.value.trim();
-    const senha = campoSenha.value;
-    const confirmar_senha = campoConfirmarSenha.value;
-    const foto = campoFoto.value;
-    const bio = campoBio.value;
+        const nome = campoNome.value.trim();
+        const email = campoEmail.value.trim();
+        const senha = campoSenha.value;
+        const confirmar_senha = campoConfirmarSenha.value;
+        const bio = campoBio.value;
 
-    let formularioValido = true;
+        let formularioValido = true;
 
-    if(!nome) {
-        mostrarErroCampo("nome", "Informe seu nome");
-        formularioValido = false;
-    }
+        if(!nome) {
+            mostrarErroCampo("nome", "Informe seu nome");
+            formularioValido = false;
+        }
 
-    if (!email) {
-        mostrarErroCampo("email", "Informe seu e-mail.");
-        formularioValido = false;
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        mostrarErroCampo("email", "Informe um e-mail válido.");
-        formularioValido = false;
-    }
+        if (!email) {
+            mostrarErroCampo("email", "Informe seu e-mail.");
+            formularioValido = false;
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            mostrarErroCampo("email", "Informe um e-mail válido.");
+            formularioValido = false;
+        }
 
-    if (!senha) {
-        mostrarErroCampo("senha", "Crie uma senha.");
-        formularioValido = false;
-    }
+        if (!senha) {
+            mostrarErroCampo("senha", "Crie uma senha.");
+            formularioValido = false;
+        }
 
-    else if (senha.length < 8) {
-        mostrarErroCampo("senha", "Senha muito curta.");
-        formularioValido = false;
-    }
-        
-    if (!confirmar_senha) {
-        mostrarErroCampo("confirmar_senha", "Confirme a senha");
-        formularioValido = false;
-    }
+        else if (senha.length < 8) {
+            mostrarErroCampo("senha", "Senha muito curta.");
+            formularioValido = false;
+        }
 
-    else if (senha !== confirmar_senha) {
-        mostrarErroCampo("confirmar_senha", "As senhas não coincidem.");
-        formularioValido = false;
-    }
+        if (!confirmar_senha) {
+            mostrarErroCampo("confirmar_senha", "Confirme a senha");
+            formularioValido = false;
+        }
 
-    // para pegar os dados
-    const dadosCadastro = new FormData();
+        else if (senha !== confirmar_senha) {
+            mostrarErroCampo("confirmar_senha", "As senhas não coincidem.");
+            formularioValido = false;
+        }
 
-    dadosCadastro.append("nome", nome);
-    dadosCadastro.append("email", email);
-    dadosCadastro.append("senha", senha);
-    dadosCadastro.append("bio", bio);
-
-    // para adicionar a foto somente se uma foi selecionada
-    if (campoFoto.files.length > 0) {
-        dadosCadastro.append("foto", campoFoto.files[0]);
-    }
-
-    // para enviar os dados do cadastro
-    try {
-        const resposta = await fetch("/api/cadastro", {
-            method: "POST",
-            body: dadosCadastro
-        });
-
-        const resultado = await resposta.json();
-
-        if (!resposta.ok) {
-            mostrarMensagem(resultado.mensagem || "Erro ao realizar cadastro.");
+        if (!formularioValido) {
             return;
         }
 
-        mostrarMensagem(resultado.mensagem, "sucesso");
+        // para pegar os dados
+        const dadosCadastro = new FormData();
 
-    }
-    catch (erro) {
-        mostrarMensagem("Não foi possível conectar ao servidor.");
-        console.error(erro);
-    }
-});
+        dadosCadastro.append("nome", nome);
+        dadosCadastro.append("email", email);
+        dadosCadastro.append("senha", senha);
+        dadosCadastro.append("bio", bio);
+
+        // para adicionar a foto somente se uma foi selecionada
+        if (campoFoto.files.length > 0) {
+            dadosCadastro.append("foto", campoFoto.files[0]);
+        }
+
+        // para enviar os dados do cadastro
+        try {
+            const resposta = await fetch("/api/cadastro", {
+                method: "POST",
+                body: dadosCadastro
+            });
+
+            const resultado = await resposta.json();
+
+            if (!resposta.ok) {
+
+                if (resultado.campo) {
+                    mostrarErroCampo(resultado.campo, resultado.mensagem);
+                } else {
+                    mostrarMensagem(resultado.mensagem || "Erro ao realizar cadastro.");
+                }
+
+                return;
+            }
+
+            mostrarMensagem(resultado.mensagem, "sucesso");
+        }
+        catch (erro) {
+            mostrarMensagem("Não foi possível conectar ao servidor.");
+            console.error(erro);
+        }
+    });
+}

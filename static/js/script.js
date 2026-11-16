@@ -1,29 +1,69 @@
-const formularioBug =
-    document.getElementById("bugForm");
+const formularioBug = document.getElementById("bugForm");
 
-const mensagemBug =
-    document.getElementById("bugMessage");
+const campoRelato = document.getElementById("bugDescription");
 
-const modalBug =
-    document.getElementById("bugModal");
+const feedbackBug = document.getElementById("bugFeedback");
 
-
-formularioBug.addEventListener("submit", (evento) => {
-
-    evento.preventDefault();
-
-    console.log("Mensagem enviada com sucesso!");
-
-    mensagemBug.classList.remove("d-none");
-
-    formularioBug.reset();
-});
+const modalBug = document.getElementById("bugModal");
 
 
-modalBug.addEventListener("hidden.bs.modal", () => {
+if (formularioBug) {
 
-    mensagemBug.classList.add("d-none");
+    formularioBug.addEventListener("submit", async function(evento) {
 
-    formularioBug.reset();
+        evento.preventDefault();
 
-});
+        const relato = campoRelato.value.trim();
+
+        if (!relato) {
+            return;
+        }
+
+        const dadosBug = new FormData();
+
+        dadosBug.append("relato", relato);
+
+        try {
+
+            const resposta = await fetch("/api/relato-bug", {
+                method: "POST",
+                body: dadosBug
+            });
+
+            const resultado = await resposta.json();
+
+            if (!resposta.ok) {
+                feedbackBug.textContent = resultado.mensagem;
+                feedbackBug.classList.remove("d-none");
+                return;
+            }
+
+            feedbackBug.textContent = resultado.mensagem;
+            feedbackBug.classList.remove("d-none");
+
+            formularioBug.reset();
+
+        } catch (erro) {
+
+            console.error("Erro ao enviar relato:", erro);
+
+            feedbackBug.textContent = "Não foi possível enviar o relato.";
+            feedbackBug.classList.remove("d-none");
+        }
+
+    });
+
+}
+
+
+if (modalBug) {
+
+    modalBug.addEventListener("hidden.bs.modal", () => {
+
+        feedbackBug.classList.add("d-none");
+
+        formularioBug.reset();
+
+    });
+
+}

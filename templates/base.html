@@ -84,19 +84,20 @@
                             <textarea
                                 class="form-control"
                                 id="bugDescription"
+                                name="relato"
                                 rows="5"
                                 placeholder="Descreva o problema..."
                                 required
                             ></textarea>
+                            <div
+                                id="bugFeedback"
+                                class="alert alert-dark d-none"
+                                role="alert"
+                            >
+                                Mensagem enviada com sucesso!
+                            </div>
+                            <button type="submit" class="btn btn-dark">Enviar</button>
                         </div>
-                        <div
-                            id="bugMessage"
-                            class="alert alert-dark d-none"
-                            role="alert"
-                        >
-                            Mensagem enviada com sucesso!
-                        </div>
-                        <button type="submit" class="btn btn-dark">Enviar</button>
                     </form>
                 </div>
             </div>
