@@ -6,10 +6,13 @@ from werkzeug.security import generate_password_hash
 # importa função de conex]ao
 from db import get_connection
 
-#pysql
+# pysql
 from pymysql.err import IntegrityError
 
 import re
+
+# para as imagens
+import base64
 
 app = Flask(__name__)
 
@@ -144,6 +147,31 @@ def inserir_relato(relato):
         if conexao:
             conexao.close()
 
+# busca os novos usuarios
+def buscar_novos_usuarios():
+    conexao = get_connection()
+
+    try:
+        with conexao.cursor() as cursor:
+            cursor.execute(
+                "select nome, foto, bio from usuario order by id_usuario DESC limit 10"
+            )
+
+            usuarios = cursor.fetchall()
+
+            for usuario in usuarios:
+                if usuario["foto"] == None:
+                    usuario["foto"] = "/static/img/avatar-padrao.png"
+                else:
+                    usuario["foto"] = "data:image/png;base64," + base64.b64encode(
+                        usuario["foto"]
+                    ).decode("utf-8")
+
+            return usuarios
+
+    finally:
+        conexao.close()
+
 # rotas
 @app.route("/")
 def index():
@@ -160,6 +188,24 @@ def create():
 @app.route("/signup")
 def signup():
     return render_template("signup.html")
+
+@app.route("/api/novos-usuarios")
+def novos_usuarios():
+    try:
+        usuarios = buscar_novos_usuarios()
+
+        return jsonify({
+            "sucesso": True,
+            "usuarios": usuarios
+        }), 200
+
+    except Exception:
+        app.logger.exception("Erro ao buscar novos usuarios.")
+
+        return jsonify({
+            "sucesso": False,
+            "mensagem": "Não foi possível carregar os usuários."
+        }), 500
 
 # forulario de cadastro
 @app.route("/api/cadastro", methods=["POST"])
@@ -261,6 +307,7 @@ def cadastro_usuario():
         }), 201
 
     except IntegrityError:
+
         # Proteção contra duplicidade em requisições simultâneas
         return jsonify({
             "sucesso": False,

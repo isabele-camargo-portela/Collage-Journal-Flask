@@ -66,22 +66,23 @@ Collage-journal | Home
             <p>É possível reorganizar elementos, combinar diferentes tipos de conteúdo, testar novas composições e guardar cada criação sem precisar começar uma nova página física.</p>
             <p>O Collage-journal nasce justamente desse encontro: a liberdade visual da colagem com a flexibilidade do digital.</p>
         </section>
-        <section>
+        <section id="vai_para_create">
             <h4>Pronto para criar uma página?</h4>
             <p>Tente criar a sua:</p>
             <button><a href="{{ url_for('create') }}" class="btn">Criar meu journal</a></button>
         </section>
         <section id="novos-usuarios">
             <h4>Veja os nossos novos usuários</h4>
-            <div class="usuarios">
-                <article class="usuario">
-                    <figure>
-                        <img>
-                    </figure>
-                    <h5>Nome</h5>
-                    <p>BIO</p>
-                </article>
+            <div id="perfis" class="perfis"></div>
+            <div class="scroll">
+                <button id="left" onclick="scrollCards(-1)">←</button>
+                <button id="right" onclick="scrollCards(1)">→</button>
             </div>
         </section>
     </main>
+{% endblock %}
+{% block scripts %}
+
+    <script src="{{ url_for('static', filename='./js/home.js') }}"></script>
+
 {% endblock %}
