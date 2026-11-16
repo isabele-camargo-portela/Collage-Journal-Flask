@@ -425,25 +425,16 @@ main p {
     line-height: 1.6;
 }
 
-#novos-usuarios{
-    display: flex;
-    flex-direction: row;
-}
-
-#novos-usuarios img{
-    border-radius: 50%;
-}
-
-main > section:last-child {
+main > section#vai_para_create {
     text-align: center;
 }
 
-main > section:last-child p {
+main > section#vai_para_create p {
     margin-left: auto;
     margin-right: auto;
 }
 
-main > section:last-child button {
+main > section#vai_para_create button {
     margin-top: 1rem;
     padding: 0;
 
@@ -455,12 +446,12 @@ main > section:last-child button {
         background-color 0.2s ease;
 }
 
-main > section:last-child button:hover {
+main > section#vai_para_create button:hover {
     transform: translateY(-3px);
     background-color: #fefefe;
 }
 
-main > section:last-child button a {
+main > section#vai_para_create button a {
     display: block;
 
     padding: 0.8rem 1.5rem;
@@ -469,8 +460,49 @@ main > section:last-child button a {
     text-decoration: none;
 }
 
-main > section:last-child button:hover a {
+main > section#vai_para_create button:hover a {
     color: #303034;
+}
+
+#novos-usuarios{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px
+}
+
+.perfil {
+    display: flex;
+    flex-direction: row;
+
+    overflow: hidden;
+}
+
+.perfis .card-perfil {
+    width: 250px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+}
+
+.perfis img{
+    width: 150px;          
+    height: 150px;
+    
+    border-radius: 50%;
+}
+
+.perfil h6, .perfil #right, .perfil #left {
+    font-weight: bold;
+}
+
+#right, #left {
+    width: 50px;
+    height: 50px;
+    border: 0px;
+    border-radius: 50%;
 }
 
 .bug-button {
