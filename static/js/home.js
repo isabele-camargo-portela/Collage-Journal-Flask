@@ -62,14 +62,14 @@ async function carregarUsuarios() {
 
 right.addEventListener("click", function() {
     cards.scrollBy({
-        left: 320,
+        left: 300,
         behavior: "smooth"
     });
 });
 
 left.addEventListener("click", function() {
     cards.scrollBy({
-        left: -320,
+        left: -300,
         behavior: "smooth"
     });
 });

@@ -164,6 +164,8 @@ main {
 
     overflow: hidden;
 
+    align-items: center;
+
     box-shadow: 6px 6px 0 #303034;
 
     transition:
@@ -263,6 +265,8 @@ main {
     background-color: #303034;
     color: #fefefe;
 
+    text-align: center;
+
     border: 2px solid #303034;
 }
 
@@ -292,6 +296,7 @@ main {
 
 .cadastro textarea {
     height: 100%;
+    padding: 5px;
 }
 
 .cadastro input:focus, .cadastro textarea:focus{
@@ -337,7 +342,9 @@ main {
 }
 
 main > section:not(.banner) {
+    width: 100%;
     max-width: 1100px;
+    box-sizing: border-box;
 
     margin: 0 auto;
     padding: 6rem 2rem;
@@ -465,37 +472,68 @@ main > section#vai_para_create button:hover a {
 }
 
 #novos-usuarios{
+    min-width: 0;
+
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 20px
+    align-items: stretch;
+    gap: 20px;
 }
 
-.perfil {
+#novos-usuarios h4 {
+    text-align: center;
+}
+
+.perfis {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 
-    overflow: hidden;
+    gap: 30px;
+
+    width: 960px;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    margin: 0 auto;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-behavior: smooth;
+
+    scrollbar-width: none;
 }
 
 .perfis .card-perfil {
-    width: 250px;
-    height: 300px;
+    height: 400px;
     display: flex;
     flex-direction: column;
     gap: 5px;
     align-items: center;
+    text-align: center;
+
+    flex: 0 0 300px;
 }
 
 .perfis img{
-    width: 150px;          
-    height: 150px;
+    width: 200px;          
+    height: 200px;
     
     border-radius: 50%;
 }
 
-.perfil h6, .perfil #right, .perfil #left {
+.perfis h6, .perfis #right, .perfis #left {
     font-weight: bold;
+}
+
+.scroll {
+    display: flex;
+    justify-content: center;
+
+    gap: 40px;
+
+    margin: 30px 0px;
 }
 
 #right, #left {
@@ -1003,6 +1041,14 @@ footer {
     .image-option {
         height: 120px;
     }
+
+    .perfis {
+        width: 850px;
+    }
+
+    .perfis .card-perfil {
+        flex: 0 0 270px;
+    }
 }
 
 
@@ -1040,6 +1086,36 @@ footer {
 
     #cadastro {
         min-width: auto;
+    }
+
+    .perfis {
+        width: 600px;
+        gap: 30px;
+    }
+
+    .perfis .card-perfil {
+        flex: 0 0 180px;
+    }
+
+    .perfis img{
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .perfis {
+        width: 500px;
+        gap: 25px;
+    }
+
+    .perfis .card-perfil {
+        flex: 0 0 150px;
+    }
+
+    .perfis img{
+        width: 150px;
+        height: 150px;
     }
 }
 
@@ -1256,6 +1332,16 @@ footer {
     #cadastro .senha {
         flex-direction: column;
     }
+
+    .perfis {
+        width: 400px;
+        padding: 0 100px;
+        gap: 100px;
+    }
+
+    .perfis .card-perfil{
+        height: 300px;
+    }
 }
 
 @media only screen and (max-width: 400px) {
@@ -1276,5 +1362,11 @@ footer {
 
     .perfil {
         grid-template-columns: 1fr;
+    }
+
+    .perfis {
+        width: 100%;
+        padding: 0 75px;
+        gap: 75px;
     }
 }
